@@ -10,7 +10,7 @@
 
 ```markdown
 ---
-title: Название книги
+title: Название книги | Автор | Аудиокнига
 author: Автор
 narrator: Чтец
 duration: Продолжительность (часы)
@@ -49,30 +49,30 @@ finished: Дата окончания (YYYY-MM-DD)
 
 ### Бизнес и управление проектами
 
-- [Deadline. Роман об управлении проектами](/audiobooks/deadline/) — Том Демарко ⭐⭐⭐⭐⭐
-- [Мифический человеко-месяц](/audiobooks/mificheskiy-cheloveko-mesyats/) — Фредерик Брукс ⭐⭐⭐⭐⭐
-- [Предпринимательский миф](/audiobooks/predprinimatelskiy-mif/) — Майкл Гербер ⭐⭐⭐⭐⭐
-- [О чём молчит Биг Мак](/audiobooks/o-chyom-molchit-big-mak/) — Джон Лав ⭐⭐⭐⭐
+- [Deadline. Роман об управлении проектами | Том Демарко | Аудиокнига](/audiobooks/deadline/) ⭐⭐⭐⭐⭐
+- [Мифический человеко-месяц | Фредерик Брукс | Аудиокнига](/audiobooks/mificheskiy-cheloveko-mesyats/) ⭐⭐⭐⭐⭐
+- [Предпринимательский миф | Майкл Гербер | Аудиокнига](/audiobooks/predprinimatelskiy-mif/) ⭐⭐⭐⭐⭐
+- [О чём молчит Биг Мак | Джон Лав | Аудиокнига](/audiobooks/o-chyom-molchit-big-mak/) ⭐⭐⭐⭐
 
 ### Маркетинг и карьера
 
-- [Позиционирование. Битва за ваш разум](/audiobooks/pozitsionirovanie/) — Эл Райс, Джек Траут ⭐⭐⭐⭐⭐
-- [Как быть крысой. Искусство интриг и выживания на работе](/audiobooks/kak-byt-krysoy/) — Йооп Сгрийверс ⭐⭐⭐⭐
+- [Позиционирование. Битва за ваш разум | Эл Райс, Джек Траут | Аудиокнига](/audiobooks/pozitsionirovanie/) ⭐⭐⭐⭐⭐
+- [Как быть крысой. Искусство интриг и выживания на работе | Йооп Сгрийверс | Аудиокнига](/audiobooks/kak-byt-krysoy/) ⭐⭐⭐⭐
 
 ### Саморазвитие и продуктивность
 
-- [Атомные привычки](/audiobooks/atomnye-privychki/) — Джеймс Клир ⭐⭐⭐⭐⭐
-- [Как научиться учиться](/audiobooks/kak-nauchitsya-uchitsya/) — Ульрих Бозер ⭐⭐⭐⭐
-- [Ешь. Двигайся. Спи](/audiobooks/esh-dvigaysya-spi/) — Том Рат ⭐⭐⭐⭐
+- [Атомные привычки | Джеймс Клир | Аудиокнига](/audiobooks/atomnye-privychki/) ⭐⭐⭐⭐⭐
+- [Как научиться учиться | Ульрих Бозер | Аудиокнига](/audiobooks/kak-nauchitsya-uchitsya/) ⭐⭐⭐⭐
+- [Ешь. Двигайся. Спи | Том Рат | Аудиокнига](/audiobooks/esh-dvigaysya-spi/) ⭐⭐⭐⭐
 
 ### Художественная литература и биографии
 
-- [Атлант расправил плечи](/audiobooks/atlant-raspravil-plechi/) — Айн Рэнд ⭐⭐⭐⭐⭐
-- [Стив Джобс. Биография](/audiobooks/steve-jobs/) — Уолтер Айзексон ⭐⭐⭐⭐⭐
+- [Атлант расправил плечи | Айн Рэнд | Аудиокнига](/audiobooks/atlant-raspravil-plechi/) ⭐⭐⭐⭐⭐
+- [Стив Джобс. Биография | Уолтер Айзексон | Аудиокнига](/audiobooks/steve-jobs/) ⭐⭐⭐⭐⭐
 
 ### Примеры
 
-- [Пример аудиокниги](/audiobooks/example-book/) — Иван Иванов ⭐⭐⭐⭐
+- [Пример аудиокниги | Иван Иванов | Аудиокнига](/audiobooks/example-book/) ⭐⭐⭐⭐
 
 ---
 
