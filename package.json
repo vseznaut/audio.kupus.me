@@ -1,0 +1,27 @@
+{
+  "name": "kupus.me",
+  "version": "1.0.0",
+  "description": "��#\u0000 \u0000k\u0000u\u0000p\u0000u\u0000s\u0000.\u0000m\u0000e\u0000\r\u0000 \u0000",
+  "main": "index.js",
+  "scripts": {
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "docs:preview": "vitepress preview docs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vseznaut/kupus.me.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/vseznaut/kupus.me/issues"
+  },
+  "homepage": "https://github.com/vseznaut/kupus.me#readme",
+  "devDependencies": {
+    "vitepress": "^1.6.4",
+    "vue": "^3.5.25"
+  }
+}
