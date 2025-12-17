@@ -1,72 +1,40 @@
-# Развертывание audiobook.kupus.me
+# Развертывание audio.kupus.me
 
-## Два варианта развертывания
+## Шаги развертывания
 
-### Вариант 1: Статические файлы (Рекомендуется)
+### 1. Соберите сайт
 
-Nginx раздаёт собранные статические файлы напрямую. Это быстрее и эффективнее.
+```bash
+cd /var/www/kupus.me
+npm run docs:build
+```
 
-#### Шаги:
+Это создаст готовые файлы в `docs/.vitepress/dist`
 
-1. **Соберите сайт:**
-   ```bash
-   npm run docs:build
-   ```
+### 2. Установите nginx конфиг
 
-2. **Скопируйте nginx конфиг:**
-   ```bash
-   sudo cp audiobook.kupus.me /etc/nginx/sites-available/audiobook.kupus.me
-   sudo ln -s /etc/nginx/sites-available/audiobook.kupus.me /etc/nginx/sites-enabled/
-   ```
+```bash
+sudo cp audio.kupus.me /etc/nginx/sites-available/audio.kupus.me
+sudo ln -s /etc/nginx/sites-available/audio.kupus.me /etc/nginx/sites-enabled/
+```
 
-3. **Проверьте конфигурацию:**
-   ```bash
-   sudo nginx -t
-   ```
+### 3. Проверьте конфигурацию
 
-4. **Перезагрузите nginx:**
-   ```bash
-   sudo systemctl reload nginx
-   ```
+```bash
+sudo nginx -t
+```
 
-5. **При обновлении контента:**
-   ```bash
-   npm run docs:build
-   sudo systemctl reload nginx
-   ```
+Должно быть: `syntax is ok` и `test is successful`
 
----
+### 4. Перезагрузите nginx
 
-### Вариант 2: Через прокси на preview сервер
+```bash
+sudo systemctl reload nginx
+```
 
-Nginx проксирует запросы на запущенный VitePress preview сервер.
+### 5. Проверьте работу
 
-#### Шаги:
-
-1. **Соберите сайт:**
-   ```bash
-   npm run docs:build
-   ```
-
-2. **Запустите preview сервер:**
-   ```bash
-   # В отдельном tmux/screen или с nohup
-   npm run docs:preview
-   # Или в фоне:
-   nohup npm run docs:preview > /var/log/vitepress-preview.log 2>&1 &
-   ```
-
-3. **Скопируйте nginx конфиг:**
-   ```bash
-   sudo cp audiobook.kupus.me.proxy /etc/nginx/sites-available/audiobook.kupus.me
-   sudo ln -s /etc/nginx/sites-available/audiobook.kupus.me /etc/nginx/sites-enabled/
-   ```
-
-4. **Проверьте и перезагрузите nginx:**
-   ```bash
-   sudo nginx -t
-   sudo systemctl reload nginx
-   ```
+Откройте в браузере: **http://audio.kupus.me**
 
 ---
 
@@ -75,38 +43,40 @@ Nginx проксирует запросы на запущенный VitePress pr
 После того, как сайт работает по HTTP:
 
 ```bash
-sudo certbot --nginx -d audiobook.kupus.me
+sudo certbot --nginx -d audio.kupus.me
 ```
 
 Certbot автоматически:
-- Получит SSL сертификат
-- Обновит конфиг nginx
-- Настроит редирект с HTTP на HTTPS
+- ✅ Получит SSL сертификат от Let's Encrypt
+- ✅ Обновит ваш nginx конфиг
+- ✅ Настроит редирект с HTTP на HTTPS
+- ✅ Создаст задачу для автопродления сертификата
 
-### Автопродление сертификата
-
-Certbot автоматически создаёт cron job для продления. Проверить:
-
-```bash
-sudo certbot renew --dry-run
-```
+После этого сайт будет доступен по **https://audio.kupus.me**
 
 ---
 
-## Автоматизация деплоя
+## Обновление контента
 
-Создайте скрипт для быстрого обновления:
+Когда добавляете новые книги или изменяете контент:
+
+```bash
+cd /var/www/kupus.me
+git pull                  # Получить изменения из GitHub
+npm run docs:build        # Собрать новую версию
+sudo systemctl reload nginx  # Перезагрузить nginx (опционально)
+```
+
+### Скрипт автоматизации
+
+Создайте файл `deploy.sh`:
 
 ```bash
 #!/bin/bash
-# deploy.sh
-
 cd /var/www/kupus.me
 git pull
-npm install
+npm install  # На случай если обновились зависимости
 npm run docs:build
-sudo systemctl reload nginx
-
 echo "✅ Сайт обновлён!"
 ```
 
@@ -115,35 +85,42 @@ echo "✅ Сайт обновлён!"
 chmod +x deploy.sh
 ```
 
-Используйте:
+Теперь просто запускайте:
 ```bash
 ./deploy.sh
 ```
 
 ---
 
-## Проверка работы
-
-1. **HTTP:** http://audiobook.kupus.me
-2. **После certbot:** https://audiobook.kupus.me
-
 ## Логи
 
-- Access: `/var/log/nginx/audiobook.kupus.me.access.log`
-- Error: `/var/log/nginx/audiobook.kupus.me.error.log`
-- VitePress (если прокси): `/var/log/vitepress-preview.log`
+Если что-то не работает, смотрите логи:
+
+```bash
+# Логи доступа
+sudo tail -f /var/log/nginx/audio.kupus.me.access.log
+
+# Логи ошибок
+sudo tail -f /var/log/nginx/audio.kupus.me.error.log
+```
+
+---
 
 ## Устранение проблем
 
-### 502 Bad Gateway (вариант с прокси)
-- Проверьте, что preview сервер запущен: `ps aux | grep vitepress`
-- Проверьте порт: `netstat -tlnp | grep 4173`
+### Сайт не открывается (502 / 504)
+- Проверьте, что nginx запущен: `sudo systemctl status nginx`
+- Перезапустите: `sudo systemctl restart nginx`
 
-### 404 Not Found (вариант со статикой)
-- Проверьте путь к файлам в nginx конфиге
-- Убедитесь, что сборка выполнена: `ls -la docs/.vitepress/dist`
+### Страница не найдена (404)
+- Проверьте, что сборка выполнена: `ls -la docs/.vitepress/dist`
+- Убедитесь, что путь в конфиге правильный: `/var/www/kupus.me/docs/.vitepress/dist`
 
-### Не обновляется контент
-- Очистите кэш браузера (Ctrl+F5)
-- Пересоберите: `npm run docs:build`
-- Перезагрузите nginx: `sudo systemctl reload nginx`
+### Старый контент после обновления
+- Очистите кэш браузера (Ctrl+Shift+R или Cmd+Shift+R)
+- Пересоберите сайт: `npm run docs:build`
+
+### DNS не резолвится
+- Проверьте A-запись для audio.kupus.me в настройках домена
+- Подождите до 48 часов для распространения DNS
+- Проверьте: `dig audio.kupus.me` или `nslookup audio.kupus.me`

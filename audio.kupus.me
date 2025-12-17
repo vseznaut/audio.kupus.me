@@ -1,13 +1,13 @@
 server {
     listen 80;
-    server_name audiobook.kupus.me;
+    server_name audio.kupus.me;
 
-    root /var/www/kupus.me/docs/.vitepress/dist;
+    root /var/www/audio.kupus.me/docs/.vitepress/dist;
     index index.html;
 
     # Логи
-    access_log /var/log/nginx/audiobook.kupus.me.access.log;
-    error_log /var/log/nginx/audiobook.kupus.me.error.log;
+    access_log /var/log/nginx/audio.kupus.me.access.log;
+    error_log /var/log/nginx/audio.kupus.me.error.log;
 
     # Основная локация для статических файлов
     location / {
