@@ -15,10 +15,45 @@ export default defineConfig({
     sidebar: {
       '/audiobooks/': [
         {
-          text: 'Аудиокниги',
+          text: 'Навигация',
           items: [
             { text: 'Все аудиокниги', link: '/audiobooks/' },
             { text: 'Добавить новую', link: '/audiobooks/add' }
+          ]
+        },
+        {
+          text: 'Бизнес и управление',
+          collapsed: false,
+          items: [
+            { text: 'Deadline', link: '/audiobooks/deadline/' },
+            { text: 'Мифический человеко-месяц', link: '/audiobooks/mificheskiy-cheloveko-mesyats/' },
+            { text: 'Предпринимательский миф', link: '/audiobooks/predprinimatelskiy-mif/' },
+            { text: 'О чём молчит Биг Мак', link: '/audiobooks/o-chyom-molchit-big-mak/' }
+          ]
+        },
+        {
+          text: 'Маркетинг и карьера',
+          collapsed: false,
+          items: [
+            { text: 'Позиционирование', link: '/audiobooks/pozitsionirovanie/' },
+            { text: 'Как быть крысой', link: '/audiobooks/kak-byt-krysoy/' }
+          ]
+        },
+        {
+          text: 'Саморазвитие',
+          collapsed: false,
+          items: [
+            { text: 'Атомные привычки', link: '/audiobooks/atomnye-privychki/' },
+            { text: 'Как научиться учиться', link: '/audiobooks/kak-nauchitsya-uchitsya/' },
+            { text: 'Ешь. Двигайся. Спи', link: '/audiobooks/esh-dvigaysya-spi/' }
+          ]
+        },
+        {
+          text: 'Художественная литература',
+          collapsed: false,
+          items: [
+            { text: 'Атлант расправил плечи', link: '/audiobooks/atlant-raspravil-plechi/' },
+            { text: 'Стив Джобс', link: '/audiobooks/steve-jobs/' }
           ]
         }
       ],

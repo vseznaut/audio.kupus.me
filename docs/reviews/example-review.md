@@ -10,7 +10,7 @@ spoilers: false
 
 # {{ $frontmatter.title }}
 
-**Книга:** [{{ $frontmatter.book }}](/audiobooks/example-book)
+**Книга:** [{{ $frontmatter.book }}](/audiobooks/example-book/)
 **Автор:** {{ $frontmatter.author }}
 **Дата обзора:** {{ $frontmatter.date }}
 **Рейтинг:** ⭐ {{ $frontmatter.rating }}/5
@@ -95,4 +95,4 @@ spoilers: false
 
 ## Связанные материалы
 
-- [Карточка аудиокниги](/audiobooks/example-book)
+- [Карточка аудиокниги](/audiobooks/example-book/)
